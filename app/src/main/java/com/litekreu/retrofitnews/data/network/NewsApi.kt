@@ -6,10 +6,10 @@ import retrofit2.http.Query
 
 interface NewsApi {
     @GET("everything")
-    fun getNews(
+    suspend fun getNews(
         @Query("q") quote: String = "verstappen",
         @Query("language") language: String = "en",
-        @Query("api_key") apiKey: String = "3398295c3dba4ddaad40a423c556c9ea"
+        @Query("apiKey") apiKey: String = "3398295c3dba4ddaad40a423c556c9ea"
     ) : News
 
     companion object {

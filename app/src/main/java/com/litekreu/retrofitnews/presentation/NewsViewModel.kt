@@ -19,12 +19,12 @@ class NewsViewModel (
 
     init {
         viewModelScope.launch {
-            newsRepository.getNewsList().collectLatest {
-                when(it) {
+            newsRepository.getNewsList().collectLatest { result ->
+                when(result) {
                     is Result.Error -> { }
                     is Result.Success -> {
-                        it.data?.let { articles ->
-                            _newsState.update { articles  }
+                        result.data?.let { articles ->
+                            _newsState.update { articles }
                         }
                     }
                 }
